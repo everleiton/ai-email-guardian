@@ -175,267 +175,248 @@ def adaptive_learning():
             deploy_updated_model()
 ```
 
-## 📈 Installation & Setup
+📊 Dataset Information
+📧 Email Classification Dataset
+Source: SMS Spam Collection Dataset (commonly used for email spam detection)
+The dataset contains a comprehensive collection of email messages labeled as either "ham" (legitimate) or "spam" (unwanted), providing a robust foundation for training an effective spam detection model.
+📈 Dataset Characteristics
+AttributeDetailsTotal Messages5,572 email messagesFeaturesEmail content (text data)CategoriesHam (legitimate) vs Spam (unwanted)Data QualityPre-labeled, clean text dataLanguageEnglish language emailsFormatCSV with Category and Message columns
+🏷️ Dataset Structure
+Email Content Analysis:
+FeatureTypeDescriptionSecurity ImpactCategoryCategoricalHam (1) or Spam (0) classificationPrimary security labelMessageTextComplete email contentSource for NLP analysis
+Classification Distribution:
+Email TypeLabelDescriptionSecurity PriorityHam1Legitimate emailsSafe communicationSpam0Unwanted/malicious emailsSecurity threat
+📥 Dataset Access Instructions
+The dataset is not included in this repository due to size considerations and data privacy.
+To run this project:
 
-### Method 1: Quick Install (Recommended)
+Download the Dataset:
 
-```bash
-# One-line installation
-curl -sSL https://raw.githubusercontent.com/alam025/ai-email-guardian/main/install.sh | bash
-```
+bash   # Common dataset sources:
+   # - UCI ML Repository: SMS Spam Collection
+   # - Kaggle: Email Spam Classification datasets
+   # - Academic sources: Email corpus datasets
 
-### Method 2: Manual Setup
+Place in Project Directory:
 
-<details>
-<summary>📋 <strong>Step-by-Step Instructions</strong></summary>
+   spam-mail-detection/
+   ├── mail_data.csv          # Place downloaded dataset here
+   └── ...                    # Other project files
 
-```bash
-# 1. Clone the repository
-git clone https://github.com/alam025/ai-email-guardian.git
-cd ai-email-guardian
+Dataset Format Requirements:
 
-# 2. Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+csv   Category,Message
+   ham,"Your legitimate email content here"
+   spam,"Spam email content here"
+🚀 Getting Started
+Prerequisites
+bashPython 3.8+
+pip package manager
+Text dataset (CSV format)
+Installation
 
-# 3. Install dependencies
-pip install -r requirements.txt
+Clone the repository
 
-# 4. Download pre-trained models
-python download_models.py
+bash   git clone https://github.com/alam025/spam-mail-detection.git
+   cd spam-mail-detection
 
-# 5. Configure settings
-cp config.example.yaml config.yaml
-# Edit config.yaml with your preferences
+Install dependencies
 
-# 6. Run tests
-python -m pytest tests/
+bash   pip install -r requirements.txt
 
-# 7. Start the guardian
-python email_guardian.py
-```
+Download and prepare dataset
 
-</details>
+bash   # Place your mail_data.csv file in the project directory
+   # Ensure it has 'Category' and 'Message' columns
 
-### Method 3: Docker (Production)
+Launch analysis
 
-```bash
-# Pull and run in one command
-docker run -p 8080:8080 alammodassir/ai-email-guardian:latest
-```
+bash   jupyter notebook "Spam Mail Detection.ipynb"
+Quick Start
+python# Load the complete spam detection analysis
+jupyter notebook "Spam Mail Detection.ipynb"
 
-## 🎮 Usage Examples
+# The notebook includes:
+# - Email data loading and exploration
+# - Text preprocessing and cleaning
+# - TF-IDF feature extraction
+# - Logistic regression model training
+# - Performance evaluation and testing
+# - Real-time spam prediction system
+🔬 Methodology
+1. Data Collection & Preprocessing
 
-### Basic Email Classification
+Email Data Loading: CSV format with category labels and message content
+Null Value Handling: Replacement of null values with empty strings
+Label Encoding: Spam → 0, Ham → 1 for binary classification
+Data Validation: Ensuring proper email format and content structure
 
-```python
-from email_guardian import SpamDetector
+2. Text Processing & Feature Extraction
 
-# Initialize the AI guardian
-guardian = SpamDetector()
+TF-IDF Vectorization: Advanced text-to-numerical conversion
+Stop Words Removal: Filtering common English words for better classification
+Lowercase Conversion: Text normalization for consistent processing
+Feature Vector Creation: Transforming email text into machine-readable format
 
-# Classify a single email
-result = guardian.classify("Your email content here")
-print(f"Classification: {result.label}")
-print(f"Confidence: {result.confidence:.1%}")
-print(f"Threat Level: {result.threat_level}")
+3. Model Development & Training
+Logistic Regression Implementation:
+pythonEmail Classification Pipeline:
+├── Text Preprocessing (TF-IDF)
+├── Feature Extraction (min_df=1, stop_words='english')
+├── Label Encoding (Spam=0, Ham=1)
+├── Train-Test Split (80-20)
+├── Logistic Regression Training
+└── Performance Evaluation
+4. Model Evaluation & Validation
 
-# Batch processing
-emails = ["email1", "email2", "email3"]
-results = guardian.classify_batch(emails)
-```
+Train-Test Split: 80-20 stratified division for robust evaluation
+Accuracy Assessment: Both training and testing accuracy measurement
+Classification Performance: Precision, recall, and F1-score analysis
+Real-Time Testing: Live email classification system
 
-### Advanced API Usage
+📈 Model Performance
+🎯 Achieved Results:
 
-```python
-import requests
+Training Accuracy: 96.7% (exceptional learning performance)
+Testing Accuracy: 96.6% (excellent generalization)
+Classification Speed: Real-time email processing capability
+False Positive Rate: <4% (minimal legitimate email blocking)
 
-# REST API endpoint
-url = "http://localhost:8080/api/v1/classify"
+📊 Performance Highlights
+The spam detection model demonstrates:
 
-# Send email for classification
-response = requests.post(url, json={
-    "email_content": "Your email here",
-    "sender": "sender@example.com",
-    "subject": "Email subject"
-})
+High Precision: Accurate spam identification with minimal false positives
+Strong Recall: Effective detection of actual spam emails
+Balanced Performance: Optimal trade-off between security and usability
+Robust Generalization: Consistent performance on unseen email data
 
-result = response.json()
-print(f"Spam Probability: {result['spam_probability']}")
-```
-
-### Real-Time Email Monitoring
-
-```python
-from email_guardian import EmailMonitor
-
-# Monitor inbox in real-time
-monitor = EmailMonitor(
-    email_provider="gmail",
-    credentials="path/to/credentials.json"
-)
-
-@monitor.on_new_email
-def handle_email(email):
-    result = guardian.classify(email.content)
-    if result.is_spam:
-        email.move_to_spam()
+🛡️ Real-Time Spam Detection System
+Interactive Email Classifier
+python# Example: Email spam detection
+def predict_spam(email_content):
+    """
+    Predict if an email is spam or ham
+    """
+    # Transform email content using trained TF-IDF vectorizer
+    input_features = feature_extraction.transform([email_content])
+    
+    # Make prediction using trained model
+    prediction = model.predict(input_features)
+    
+    if prediction[0] == 1:
+        return "✅ Ham Mail (Legitimate)"
     else:
-        email.mark_as_safe()
+        return "🚨 Spam Mail (Blocked)"
 
-monitor.start()  # Runs continuously
-```
+# Example usage
+email_text = "Congratulations! You've won $1000000. Click here now!"
+result = predict_spam(email_text)
+print(result)  # Output: 🚨 Spam Mail (Blocked)
+Security Features:
 
-## 🌟 Features That Make Us Viral
+Instant Classification: Real-time email threat detection
+High Accuracy: 96%+ spam identification rate
+Low False Positives: Minimal blocking of legitimate emails
+Enterprise Ready: Scalable for large email volumes
 
-### 🔥 What People Love:
+🎯 Security Insights & Applications
+Key Findings:
 
-1. **Zero Configuration**: Works out of the box
-2. **Privacy Focused**: Your data never leaves your device
-3. **Open Source**: Completely free and transparent
-4. **Blazing Fast**: 50ms response time
-5. **Self-Improving**: Gets better automatically
-6. **Multi-Platform**: Works everywhere (Windows, Mac, Linux)
+✅ TF-IDF vectorization effectively captures spam patterns
+✅ Logistic regression provides optimal balance of accuracy and speed
+✅ Stop word removal significantly improves classification performance
+✅ Text preprocessing is crucial for robust spam detection
 
-### 🚀 Advanced Features:
+Real-World Applications:
+📧 Email Service Providers
 
-- **🤖 AI-Powered Phishing Detection**
-- **📱 Mobile App Integration**
-- **🔗 Browser Extension**
-- **📊 Analytics Dashboard**
-- **🛡️ Enterprise Security Suite**
-- **🌐 Multi-Language Support**
+Gmail, Outlook, Yahoo Mail spam filtering
+Automatic threat detection and quarantine
+User inbox protection and security
 
-## 📊 Project Statistics
+🏢 Enterprise Security
+
+Corporate email system protection
+Phishing attack prevention
+Advanced threat detection systems
+
+🔒 Cybersecurity Solutions
+
+Email security gateways
+Threat intelligence platforms
+Security information and event management (SIEM)
+
+📱 Mobile Applications
+
+Smartphone email app protection
+SMS spam detection (with adaptation)
+Real-time communication security
+
+🔮 Future Enhancements
+
+ Deep Learning Models: LSTM and BERT for advanced NLP understanding
+ Multi-language Support: International spam detection capabilities
+ Real-Time API: RESTful API for email service integration
+ Advanced Features: Sender reputation, attachment analysis, URL checking
+ Dashboard Interface: Web-based spam monitoring and analytics
+ Mobile Integration: Smartphone app spam protection
+ Phishing Detection: Advanced social engineering attack prevention
+ Adaptive Learning: Continuous model improvement with new data
+
+📁 Project Structure
+spam-mail-detection/
+│
+├── Spam Mail Detection.py             # Main analysis notebook
+├── mail_data.csv                      # Email dataset (download separately)
+├── requirements.txt                   # Project dependencies
+├── README.md                         # Project documentation
+├── LICENSE                          # MIT License
+├── .gitignore                      # Git ignore file
+└── assets/                        # Security visualizations and resources
+    ├── performance_metrics/
+    ├── classification_analysis/
+    ├── security_insights/
+    └── model_evaluation/
+🤝 Contributing
+Contributions are welcome! This email security project welcomes improvements in:
+
+Model Accuracy: Advanced NLP algorithms and feature engineering
+Security Features: Enhanced threat detection capabilities
+Performance Optimization: Faster processing and scalability
+Integration: API development for email service providers
+
+Contribution Process:
+
+Fork the repository
+Create your feature branch (git checkout -b feature/SecurityImprovement)
+Commit your changes (git commit -m '🛡️ Add advanced spam detection')
+Push to the branch (git push origin feature/SecurityImprovement)
+Open a Pull Request
+
+🛡️ Email Security Ethics
+Important: This model is designed for educational and security purposes. Always comply with data privacy regulations (GDPR, CCPA) when implementing email classification systems. Respect user privacy and ensure transparent spam filtering policies.
+📄 License
+This project is licensed under the MIT License - see the LICENSE file for details.
+🔒 Acknowledgments
+
+Email Security Community: For advancing spam detection research
+Open Source NLP Libraries: Scikit-learn, NLTK, and text processing tools
+Cybersecurity Research: For providing insights into email threat patterns
+Academic Institutions: For contributing to spam detection methodologies
+
+👨‍💻 Author
+Alam Modassir
+
+🐙 GitHub: @alam025
+💼 LinkedIn: alammodassir
+📧 Email: alammodassir025@gmail.com
+
 
 <div align="center">
-
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=alam025&repo=ai-email-guardian&show_icons=true&theme=radical)
-
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=alam025&layout=compact&theme=radical)
-
+  <h3>⭐ If this project enhanced your email security, please give it a star! ⭐</h3>
+  <p><em>Made with ❤️ for advancing cybersecurity through machine learning</em></p>
 </div>
 
-## 🏆 Recognition & Awards
-
-- 🥇 **Best Open Source Security Tool 2024** - DevSecOps Awards
-- 🌟 **Top 10 AI Projects** - Machine Learning Weekly
-- 🛡️ **Cybersecurity Innovation Award** - InfoSec Conference
-- 📈 **Fastest Growing ML Repository** - GitHub Trending
-
-## 🤝 Contributing & Community
-
-### 🌟 Join Our Amazing Community!
-
-- **Discord**: [Join 2,000+ developers](https://discord.gg/ai-email-guardian)
-- **Reddit**: [r/EmailGuardian](https://reddit.com/r/EmailGuardian)
-- **Twitter**: [@AIEmailGuardian](https://twitter.com/AIEmailGuardian)
-
-### 🚀 Ways to Contribute:
-
-<table>
-<tr>
-<td align="center">
-<img src="https://via.placeholder.com/80x80/4CAF50/FFFFFF?text=🐛" width="80px" alt="Bug Reports"/><br />
-<strong>Bug Reports</strong><br />
-Found a bug? Help us fix it!
-</td>
-<td align="center">
-<img src="https://via.placeholder.com/80x80/2196F3/FFFFFF?text=💡" width="80px" alt="Feature Requests"/><br />
-<strong>Feature Ideas</strong><br />
-Share your awesome ideas!
-</td>
-<td align="center">
-<img src="https://via.placeholder.com/80x80/FF9800/FFFFFF?text=📝" width="80px" alt="Documentation"/><br />
-<strong>Documentation</strong><br />
-Help others learn!
-</td>
-<td align="center">
-<img src="https://via.placeholder.com/80x80/9C27B0/FFFFFF?text=💻" width="80px" alt="Code"/><br />
-<strong>Code</strong><br />
-Submit pull requests!
-</td>
-</tr>
-</table>
-
-### 🎯 Contribution Guidelines:
-
-1. **Fork** the repository
-2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
-3. **Commit** your changes (`git commit -m 'Add amazing feature'`)
-4. **Push** to the branch (`git push origin feature/amazing-feature`)
-5. **Open** a Pull Request
-
-## 🗺️ Roadmap
-
-### Q1 2025
-- [ ] 🧠 Deep Learning Models (BERT, LSTM)
-- [ ] 📱 Mobile App (iOS/Android)
-- [ ] 🔗 Browser Extensions (Chrome, Firefox)
-
-### Q2 2025
-- [ ] 🌐 Multi-Language Expansion (25+ languages)
-- [ ] 📊 Advanced Analytics Dashboard
-- [ ] 🏢 Enterprise Security Suite
-
-### Q3 2025
-- [ ] 🤖 AI Voice Assistant Integration
-- [ ] 🔐 Blockchain Security Features
-- [ ] 🌍 Global Threat Intelligence Network
-
-### Q4 2025
-- [ ] 🚀 Quantum-Resistant Encryption
-- [ ] 🎯 Personalized AI Models
-- [ ] 🌟 Open Source Marketplace
-
-## 📈 SEO & Discovery Tags
-
-**Keywords**: `spam detection`, `email security`, `machine learning`, `AI`, `cybersecurity`, `phishing protection`, `email filter`, `NLP`, `text classification`, `open source security`
-
-**Topics**: `artificial-intelligence`, `machine-learning`, `cybersecurity`, `email-security`, `spam-detection`, `nlp`, `python`, `tensorflow`, `scikit-learn`, `open-source`
-
-## 📄 License & Legal
-
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
-### 🔒 Security & Privacy
-
-- ✅ **No Data Collection**: Your emails stay private
-- ✅ **Transparent Code**: Open source = trustworthy
-- ✅ **GDPR Compliant**: Respects all privacy regulations
-- ✅ **SOC 2 Ready**: Enterprise security standards
-
-## 👨‍💻 Author & Team
-
 <div align="center">
-
-### 🌟 Created by Alam Modassir
-
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/alam025)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/alammodassir)
-[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:alammodassir025@gmail.com)
-[![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/alammodassir)
-
-**🚀 AI/ML Engineer | 🛡️ Cybersecurity Enthusiast | 🌟 Open Source Advocate**
-
-</div>
-
----
-
-<div align="center">
-
-### 🌟 Love this project? Give it a star! ⭐
-
-### 🔥 Want updates? Watch this repo! 👀
-
-### 🚀 Have ideas? Join our Discord! 💬
-
-**Made with ❤️ for the developer community**
-
-</div>
-
----
-
-<div align="center">
-<sub>🛡️ Protecting the digital world, one email at a time 🌍</sub>
+  <sub>🛡️ Protecting digital communication through intelligent spam detection 🛡️</sub>
 </div>

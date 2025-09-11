@@ -1,0 +1,41 @@
+# Spam Mail Detection - Required Dependencies
+# Author: Alam Modassir
+# Project: Professional Email Security & Spam Detection
+
+# Core Data Science Libraries
+numpy>=1.21.0
+pandas>=1.3.0
+
+# Machine Learning & NLP
+scikit-learn>=1.0.0
+nltk>=3.6.0
+
+# Text Processing & Feature Extraction
+# (TF-IDF Vectorization included in scikit-learn)
+
+# Jupyter Environment
+jupyter>=1.0.0
+notebook>=6.4.0
+ipykernel>=6.0.0
+
+# Data Visualization (Optional)
+matplotlib>=3.5.0
+seaborn>=0.11.0
+
+# Additional ML Utilities
+scipy>=1.7.0
+
+# Development & Testing
+pytest>=6.2.0
+
+# Email Processing (Future Enhancement)
+email-validator>=1.1.0
+
+# Performance Optimization
+joblib>=1.0.0
+
+# Requirements for Professional Development
+# Python >= 3.8 recommended for optimal performance
+# Operating System: Windows, macOS, Linux compatible
+# Memory: Minimum 4GB RAM for dataset processing
+# Storage: 1GB free space for dependencies and data

@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Email Guardian Banner](https://via.placeholder.com/800x200/FF4444/FFFFFF?text=🛡️+AI+EMAIL+GUARDIAN+🤖)
+![Email Guardian Banner](https://guardiandigital.com/images/blog/email_lock-esm-w479.webp)
 
 [![Stars](https://img.shields.io/github/stars/alam025/ai-email-guardian?style=for-the-badge&logo=github&color=yellow)](https://github.com/alam025/ai-email-guardian/stargazers)
 [![Forks](https://img.shields.io/github/forks/alam025/ai-email-guardian?style=for-the-badge&logo=github&color=blue)](https://github.com/alam025/ai-email-guardian/network)

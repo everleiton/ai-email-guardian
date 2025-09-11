@@ -1,0 +1,134 @@
+# Spam Mail Detection - Git Ignore File
+# Author: Alam Modassir
+# Professional Email Security Project
+
+# Dataset Files (Email data can be large and contain sensitive information)
+*.csv
+*.xlsx
+*.json
+*.tsv
+mail_data.csv
+email_dataset.csv
+spam_dataset.csv
+ham_dataset.csv
+
+# Trained Models (can be regenerated)
+*.pkl
+*.joblib
+*.h5
+*.model
+models/
+saved_models/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# PyCharm
+.idea/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Email Processing Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+
+# API Keys and Credentials (if any)
+config.py
+secrets.py
+credentials.json
+api_keys.txt
+
+# Large feature extraction files
+features/
+vectorizers/
+tfidf_features.npz
+
+# Email corpus and datasets
+corpus/
+email_data/
+raw_emails/
+
+# Performance reports
+reports/
+benchmarks/
+
+# Documentation builds
+docs/_build/

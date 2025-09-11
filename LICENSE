@@ -1,0 +1,45 @@
+MIT License
+
+Copyright (c) 2025 Alam Modassir
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+DISCLAIMER FOR EMAIL SECURITY APPLICATION:
+
+This spam detection software is intended for educational and research purposes.
+When implementing this technology in production email systems:
+
+1. PRIVACY: Ensure compliance with data protection regulations (GDPR, CCPA)
+2. TRANSPARENCY: Inform users about automated email classification
+3. ACCURACY: Regular monitoring and updates to maintain detection quality
+4. ETHICS: Respect user privacy and communication rights
+5. SECURITY: Implement proper data handling and storage practices
+
+The author is not responsible for any misuse of this technology or any legal
+issues arising from its implementation in email systems. Users are advised
+to consult with legal and cybersecurity professionals before deploying in
+production environments.
+
+MEDICAL/HEALTH DISCLAIMER: Not applicable to this cybersecurity project.
+
+For questions regarding proper implementation and ethical use, please contact:
+Email: alammodassir025@gmail.com
+GitHub: https://github.com/alam025
